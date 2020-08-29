@@ -1,1 +1,1 @@
-These are scripts foe pan-cancer tumor infiltrating myeloid cells analysis.
+These are scripts for pan-cancer tumor infiltrating myeloid cells analysis.
