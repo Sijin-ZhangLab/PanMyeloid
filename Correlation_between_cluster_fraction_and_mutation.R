@@ -60,6 +60,22 @@ cellInfo = cellInfo[cellInfo$patient %in% overlap, ]
 cells = cells[cells$patient %in% overlap,]
 
 dat = merge(cells, tmb[,c("patient","cancerType","TMB")], by="patient")
+# TMB
+## overall  
+pdf("/data2/csj/Pan_Myeloid/A20191105/01_revised_data/Overall_TMB_cell_proportion.pdf",width=6.4,height=4.57)
+ggplot(dat, aes(x=TMB, y=Percent)) + 
+  geom_point() +
+  stat_cor(size=3,method = "spearman") +
+  geom_smooth(method='lm',formula=y~x) +
+  theme_bw() + 
+  facet_wrap(.~meta.cluster, scales="free", nrow=2)+
+  theme_bw()+ theme(strip.text.x = element_text(size = 12, colour = "red"),
+		panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        strip.background = element_blank(),
+        panel.border = element_rect(colour = "black"))
+
+dev.off()
 
 # Spec. Mut.
 ## load files, make the dataframe
